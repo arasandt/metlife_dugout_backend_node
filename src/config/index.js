@@ -10,12 +10,14 @@ const baseConfig = {
     jwt: process.env.JWT_SECRET,
     jwtExp: '1d'
   },
-  dbUrl: "testdburl"
+  dbUrl: process.env.DB_URL || "testdburl"
 }
 
 let envConfig = {}
 
 switch (env) {
+  case 'heroku':
+    envConfig = baseConfig
   case 'dev':
   case 'development':
     envConfig = require('./dev.env')
@@ -29,5 +31,6 @@ switch (env) {
 }
 
 const config = merge(baseConfig, envConfig) 
+
 console.log("Running in environment :", config.env.toUpperCase())
 module.exports = config

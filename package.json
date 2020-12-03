@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon src/index.js",
     "test": "NODE_ENV=test mocha",
-    "start": "node src/index.js"
+    "start": "NODE_ENV=heroku node src/index.js"
   },
   "author": "",
   "license": "ISC",
