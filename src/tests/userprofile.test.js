@@ -1,6 +1,9 @@
 const app = require('../index.js');
 const chai = require('chai')
 const chaiHttp = require('chai-http')
+const mongoose = require("mongoose");
+const { UserProfile } = require("../api/userprofile/userprofileModel")
+const { connect } = require("../utils/db")
 
 const chalk = require('chalk')
 const MIX = (str) => {
@@ -10,7 +13,18 @@ const MIX = (str) => {
 chai.use(chaiHttp);
 chai.should();
 
+before(async () => {
+    console.log("Setting up DB......")
+    await connect()
+});
+
+after(async () => {
+    console.log("Tearing down DB....")
+    await mongoose.connection.db.dropDatabase();
+    });
+
 describe(MIX('Userprofile Endpoints by creating a new id'), () => {
+
         const bodyObj = {
                         id: 128538,
                         email: "sample@example.com",
