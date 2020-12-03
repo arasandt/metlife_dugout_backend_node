@@ -18,6 +18,7 @@ let envConfig = {}
 switch (env) {
   case 'heroku':
     envConfig = baseConfig
+    break
   case 'dev':
   case 'development':
     envConfig = require('./dev.env')
