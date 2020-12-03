@@ -7,9 +7,9 @@ const { auth, signIn, signUp }  = require('./utils/auth');
 // setup generic middlware for entire app
 require('./middleware/setup')(app)
 
-app.post('/nodeapi/signup', signUp)
-app.post('/nodeapi/login', signIn)
-app.use('/nodeapi/userprofile', auth, userprofileRouter)
+app.post('/api/signup', signUp)
+app.post('/api/login', signIn)
+app.use('/api/userprofile', auth, userprofileRouter)
 
 
 // catch all errors when no route 

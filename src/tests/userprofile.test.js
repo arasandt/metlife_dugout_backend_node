@@ -21,7 +21,7 @@ describe(MIX('Userprofile Endpoints by creating a new id'), () => {
         var token = ""
         it(`Create a userprofile with id ${bodyObj.id}`, (done) => {
              chai.request(app)
-                .post('/nodeapi/signup')
+                .post('/api/signup')
                 .send(bodyObj)
                 .end((err, res) => {
                      res.should.have.status(201);
@@ -32,7 +32,7 @@ describe(MIX('Userprofile Endpoints by creating a new id'), () => {
          });
         it(`Query a userprofile with id ${bodyObj.id}`, (done) => {
              chai.request(app)
-                 .get(`/nodeapi/userprofile/?id=${bodyObj.id}`)
+                 .get(`/api/userprofile/?id=${bodyObj.id}`)
                  .set({'Authorization': token})
                  .end((err, res) => {
                      res.should.have.status(200);
@@ -43,7 +43,7 @@ describe(MIX('Userprofile Endpoints by creating a new id'), () => {
 
         it(`Update a userprofile with id ${bodyObj.id}`, (done) => {
              chai.request(app)
-                 .put(`/nodeapi/userprofile/?id=${bodyObj.id}`)
+                 .put(`/api/userprofile/?id=${bodyObj.id}`)
                  .set({'Authorization': token})
                  .send({
                      firstName: "Temporary"
@@ -57,7 +57,7 @@ describe(MIX('Userprofile Endpoints by creating a new id'), () => {
 
         it(`Query a userprofile with id ${bodyObj.id} after update`, (done) => {
              chai.request(app)
-                 .get(`/nodeapi/userprofile/?id=${bodyObj.id}`)
+                 .get(`/api/userprofile/?id=${bodyObj.id}`)
                  .set({'Authorization': token})
                  .end((err, res) => {
                      res.should.have.status(200);
@@ -77,7 +77,7 @@ describe(MIX('Userprofile Endpoints by using existing id'), () => {
         var token = ""
         it(`Login a userprofile with id ${bodyObj.id}`, (done) => {
              chai.request(app)
-                .post('/nodeapi/login')
+                .post('/api/login')
                 .send(bodyObj)
                 .end((err, res) => {
                      res.should.have.status(201);
@@ -88,7 +88,7 @@ describe(MIX('Userprofile Endpoints by using existing id'), () => {
          });
         it(`Query a userprofile with id ${bodyObj.id}`, (done) => {
              chai.request(app)
-                 .get(`/nodeapi/userprofile/?id=${bodyObj.id}`)
+                 .get(`/api/userprofile/?id=${bodyObj.id}`)
                  .set({'Authorization': token})
                  .end((err, res) => {
                      res.should.have.status(200);
@@ -99,7 +99,7 @@ describe(MIX('Userprofile Endpoints by using existing id'), () => {
 
        it(`Delete a userprofile with id ${bodyObj.id}`, (done) => {
              chai.request(app)
-                .delete(`/nodeapi/userprofile/?id=${bodyObj.id}`)
+                .delete(`/api/userprofile/?id=${bodyObj.id}`)
                 .set({'Authorization': token})
                 .end((err, res) => {
                      res.should.have.status(200);
