@@ -9,7 +9,8 @@ const baseConfig = {
   secrets: {
     jwt: process.env.JWT_SECRET,
     jwtExp: '1d'
-  }
+  },
+  dbUrl: "testdburl"
 }
 
 let envConfig = {}
@@ -17,14 +18,14 @@ let envConfig = {}
 switch (env) {
   case 'dev':
   case 'development':
-    envConfig = require('./dev')
+    envConfig = require('./dev.env')
     break
   case 'test':
   case 'testing':
-    envConfig = require('./testing')
+    envConfig = require('./testing.env')
     break
   default:
-    envConfig = require('./dev')
+    envConfig = require('./dev.env')
 }
 
 const config = merge(baseConfig, envConfig) 
