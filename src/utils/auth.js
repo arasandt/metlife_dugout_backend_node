@@ -32,6 +32,10 @@ const auth = async (req, res, next) => {
     return res.status(401).send({ error: 'Invalid authentication #1' })
   }
 
+  if (payload.id != req.query.id) {
+    return res.status(401).send({ error: 'Invalid authentication #1' })
+  }
+
   const userprofile = await UserProfile.findOne({id: payload.id})
     .select('-password')
     .lean()
