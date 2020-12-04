@@ -29,7 +29,7 @@ const auth = async (req, res, next) => {
   try {
     payload = await verifyToken(token)
   } catch (e) {
-    return res.status(401).send({ error: 'Invalid authentication' })
+    return res.status(401).send({ error: 'Invalid authentication #1' })
   }
 
   const userprofile = await UserProfile.findOne({id: payload.id})
@@ -38,7 +38,7 @@ const auth = async (req, res, next) => {
     .exec()
 
   if (!userprofile) {
-    return res.status(401).send({ error: 'Invalid authentication' })
+    return res.status(401).send({ error: 'Invalid authentication #2' })
   }
 
   req.userprofile = userprofile
@@ -68,7 +68,7 @@ const signIn = async (req, res) => {
     return res.status(201).send({ token })
   } catch (e) {
     console.error(e)
-    res.status(500).send({ error: 'Invalid authentication' })
+    res.status(500).send({ error: 'Invalid authentication #2' })
   }
 }
 
