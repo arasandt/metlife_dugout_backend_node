@@ -7,7 +7,7 @@ const baseConfig = {
   port: process.env.PORT, 
   secrets: {
     jwt: process.env.JWT_SECRET,
-    jwtExp: process.env.JWT_EXPIRY
+    jwtExp: parseInt(process.env.JWT_EXPIRY)
   },
   dbUrl: process.env.DB_URL
 }

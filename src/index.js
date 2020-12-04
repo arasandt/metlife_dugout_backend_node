@@ -21,3 +21,5 @@ start()
 module.exports = app
 
 //sudo kill -9 $(sudo lsof -t -i:3000)
+// git reset --hard <commit-hash>
+// git push -f origin master
